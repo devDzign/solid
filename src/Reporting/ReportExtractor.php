@@ -2,12 +2,23 @@
 
 namespace App\Reporting;
 
+use App\Reporting\Formats\FormatterInterface;
 use App\Reporting\Formats\HtmlFormatter;
 use App\Reporting\Formats\HtmlSpecialFormatter;
 use App\Reporting\Formats\JsonFormatter;
 
 class ReportExtractor
 {
+
+    public function __construct( protected array $formatters = [] )
+    {
+        $this->formatters = $formatters;
+    }
+
+    public function addFormatter( FormatterInterface $formatter )
+    {
+        $this->formatters[] = $formatter;
+    }
 
     /**
      * Doit afficher l'ensemble des formats possibles pour un rapport en se servant
@@ -21,9 +32,10 @@ class ReportExtractor
     {
         $results = [];
 
-        $results[] = (new HtmlFormatter())->format($report);
-        $results[] = (new JsonFormatter())->format($report);
-        $results[] = (new HtmlSpecialFormatter())->format($report);
+        foreach ($this->formatters as $formatter) {
+            /** @var FormatterInterface $formatter */
+            $results[] = $formatter->format($report);
+        }
 
         return $results;
     }
