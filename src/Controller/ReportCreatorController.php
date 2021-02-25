@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Reporting\Formats\HtmlFormatter;
 use App\Reporting\Formats\JsonFormatter;
 use App\Reporting\Report;
+use App\Reporting\StringReport;
 
 class ReportCreatorController
 {
@@ -22,7 +23,7 @@ class ReportCreatorController
         $format = $_POST['format'];
 
         // Début de l'algorithme
-        $report = new Report($date, $title, $data);
+        $report = new StringReport($date, $title, $data);
 
         if ( $format === "html" ) {
             $reportResult = (new HtmlFormatter())->formatToHtml($report);
