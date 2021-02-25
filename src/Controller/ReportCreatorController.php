@@ -26,9 +26,9 @@ class ReportCreatorController
         $report = new StringReport($date, $title, $data);
 
         if ( $format === "html" ) {
-            $reportResult = (new HtmlFormatter())->formatToHtml($report);
+            $reportResult = (new HtmlFormatter())->format($report);
         } else {
-            $reportResult = (new JsonFormatter())->formatToJSON($report);
+            $reportResult = (new JsonFormatter())->format($report);
         }
 
         require_once(TEMPLATES_DIR.'report-creator/result.html.php');

@@ -14,9 +14,9 @@ class HtmlSpecialFormatter extends HtmlFormatter
      *
      * @return string
      */
-    public function formatToHtml( Report $report ): string
+    public function format( Report $report ): string
     {
-        $html = parent::formatToHTML($report);
+        $html = parent::format($report);
 
         return sprintf("<div style=\"font-weight: bold; color: red\">%s</div>", $html);
     }

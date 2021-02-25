@@ -6,7 +6,7 @@ namespace App\Reporting\Formats;
 
 use App\Reporting\Report;
 
-class HtmlFormatter
+class HtmlFormatter implements FormatterInterface
 {
 
     /**
@@ -16,7 +16,7 @@ class HtmlFormatter
      *
      * @return string
      */
-    public function formatToHtml( Report $report ): string
+    public function format( Report $report ): string
     {
         $contents = $report->getContents();
 
