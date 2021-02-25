@@ -16,7 +16,7 @@ class HtmlFormatter
      *
      * @return string
      */
-    public function formatToHTML( Report $report ): string
+    public function formatToHtml( Report $report ): string
     {
         $contents = $report->getContents();
 

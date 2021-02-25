@@ -25,7 +25,7 @@ class ReportCreatorController
         $report = new Report($date, $title, $data);
 
         if ( $format === "html" ) {
-            $reportResult = (new HtmlFormatter())->formatToHTML($report);
+            $reportResult = (new HtmlFormatter())->formatToHtml($report);
         } else {
             $reportResult = (new JsonFormatter())->formatToJSON($report);
         }
